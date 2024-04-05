@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "237190778825",
+    "project_id": "medicalapp-ece20",
+    "storage_bucket": "medicalapp-ece20.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:237190778825:android:3aa8a5ac9befcfe0d12218",
+        "android_client_info": {
+          "package_name": "com.example.medical_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "237190778825-f16gfifd6cbf8145h48sr4ck8se951ae.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB82wjKtAOQGxaV2qrV58UwJAf9-t7Nc-g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "237190778825-f16gfifd6cbf8145h48sr4ck8se951ae.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "237190778825-bemcbfpbjjvodr317vtrqs6pag7s3qio.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.medicalApp.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
