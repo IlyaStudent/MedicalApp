@@ -16,3 +16,5 @@ const alertColor = Color(0xffFF5C5C);
 const searchBG = Color(0xffFBFBFB);
 const searchIconColor = Color(0xffADADAD);
 const cardBorderColor = Color(0xffE8F3F1);
+const availabaleTimeColor = Color(0xffB3D3CE);
+const notAvailableTimeColor = Color(0xffDEECE9);

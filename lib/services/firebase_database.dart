@@ -43,4 +43,27 @@ class FireBaseDatabase {
       return {};
     }
   }
+
+  Future<Map<String, dynamic>> getWorkDays(String doctorId) async {
+    Map<String, dynamic> workDays = {};
+
+    try {
+      QuerySnapshot querySnapshot = await _firestore
+          .collection('Appointments')
+          .where("doctor_id", isEqualTo: doctorId)
+          //.orderBy("date", descending: true)
+          .get();
+
+      for (var doc in querySnapshot.docs) {
+        workDays[doc.id] = doc.data();
+      }
+
+      return workDays;
+    } catch (e) {
+      if (kDebugMode) {
+        print("Error fetching work days: $e");
+      }
+      return {};
+    }
+  }
 }

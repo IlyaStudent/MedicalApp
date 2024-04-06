@@ -12,11 +12,13 @@ class DoctorCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return DoctorPage(doctor: doctor);
-        }));
-      },
+      onTap: (borderColor == cardBorderColor)
+          ? () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return DoctorPage(doctor: doctor);
+              }));
+            }
+          : null,
       child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 0),
           child: Container(

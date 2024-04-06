@@ -97,7 +97,7 @@ class _SearchPageState extends State<SearchPage> {
           return Stack(
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 20),
+                padding: const EdgeInsets.symmetric(vertical: 20),
                 child: Material(
                     child: (docotrsSearch.isNotEmpty)
                         ? ListView.builder(

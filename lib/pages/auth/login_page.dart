@@ -113,7 +113,7 @@ class _LoginPageState extends State<LoginPage> {
               // password
               MyTextField(
                 prefixIcon: Icons.lock_outline_rounded,
-                hintText: "Введите email",
+                hintText: "Введите пароль",
                 controller: passwordController,
                 obscureText: true,
                 visibilityState: true,
