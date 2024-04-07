@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medical_app/consts.dart';
-import 'package:medical_app/pages/nav_pages/search_pages/doctor_page.dart';
+import 'package:medical_app/pages/doctors_pages/doctor_page.dart';
 import 'package:medical_app/services/doctor.dart';
 
 class DoctorCard extends StatelessWidget {

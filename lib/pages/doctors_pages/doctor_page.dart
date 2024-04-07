@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:medical_app/components/button.dart';
 import 'package:medical_app/components/doctor_card.dart';
 import 'package:medical_app/consts.dart';
+import 'package:medical_app/pages/doctors_pages/appoint_info.dart';
+import 'package:medical_app/pages/doctors_pages/comp_or_appoint.dart';
 import 'package:medical_app/services/doctor.dart';
 import 'package:intl/intl.dart';
 import 'package:medical_app/services/firebase_database.dart';
@@ -98,6 +101,17 @@ class _DoctorPageState extends State<DoctorPage> {
     };
   }
 
+  Map<String, dynamic> getAppointmentInfo() {
+    for (final info in workDaysdata!.entries) {
+      if (info.value["date"] == daySelected &&
+          info.value["time"] == hourSelected) {
+        info.value["client_id"] = FirebaseAuth.instance.currentUser?.uid;
+        return info.value;
+      }
+    }
+    return {};
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -172,7 +186,16 @@ class _DoctorPageState extends State<DoctorPage> {
                             btnBackground: accentColor,
                             btnColor: Colors.white,
                             btnText: "Забронировать",
-                            onTap: () {}),
+                            onTap: () {
+                              print(getAppointmentInfo());
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return CompOrAppointPage(
+                                  appointmentInfo: AppointInfo.fromJson(
+                                      getAppointmentInfo()),
+                                );
+                              }));
+                            }),
                       ),
                     )
                   : const SizedBox(),

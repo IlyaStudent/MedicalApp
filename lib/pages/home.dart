@@ -5,7 +5,7 @@ import 'package:medical_app/consts.dart';
 import 'package:awesome_bottom_bar/widgets/inspired/inspired.dart';
 import 'package:medical_app/pages/nav_pages/account_page.dart';
 import 'package:medical_app/pages/nav_pages/appointments_page.dart';
-import 'package:medical_app/pages/nav_pages/doctors_page.dart';
+import 'package:medical_app/pages/doctors_pages/doctors_page.dart';
 import 'package:medical_app/pages/nav_pages/home_page.dart';
 import 'package:medical_app/pages/nav_pages/hospitals/hospitals_page.dart';
 

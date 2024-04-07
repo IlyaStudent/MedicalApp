@@ -11,6 +11,7 @@ class MyTextField extends StatefulWidget {
   final bool visibilityState;
   final String? errorDesc;
   final bool searchBar;
+  final int maxLines;
   const MyTextField(
       {super.key,
       required this.prefixIcon,
@@ -20,7 +21,8 @@ class MyTextField extends StatefulWidget {
       this.visibilityState = false,
       this.searchBar = false,
       this.onChanged,
-      this.errorDesc});
+      this.errorDesc,
+      this.maxLines = 1});
 
   @override
   State<MyTextField> createState() =>
@@ -105,6 +107,7 @@ class _MyTextFieldState extends State<MyTextField> {
   Widget build(BuildContext context) {
     return Material(
       child: TextField(
+        maxLines: widget.maxLines,
         controller: widget.controller,
         obscureText: obscureText,
         cursorColor: accentColor,
@@ -112,18 +115,37 @@ class _MyTextFieldState extends State<MyTextField> {
           errorText: errorDesc,
           errorMaxLines: 1,
           focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(70),
+            borderRadius: BorderRadius.circular(30),
             borderSide: BorderSide(color: borderColor),
           ),
           errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(70),
+            borderRadius: BorderRadius.circular(30),
             borderSide: BorderSide(color: borderColor),
           ),
-          prefixIcon: Padding(
-            padding: const EdgeInsets.only(left: 25, right: 10),
-            child: Icon(
-              widget.prefixIcon,
-              color: prefixColor,
+
+          // Padding(
+          //   padding: EdgeInsets.only(bottom: 5.0),
+          //   child: Align(
+          //     alignment: Alignment.bottomCenter,
+          //     widthFactor: 1.0,
+          //     heightFactor: 1.0,
+          //     child: Icon(
+          //     widget.prefixIcon,
+          //     color: prefixColor,
+          //   ),
+          //   ),
+          // ),
+          prefixIcon: Align(
+            alignment:
+                (widget.maxLines != 1) ? Alignment.topLeft : Alignment.center,
+            widthFactor: 1.0,
+            heightFactor: widget.maxLines.toDouble(),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 25, right: 10),
+              child: Icon(
+                widget.prefixIcon,
+                color: prefixColor,
+              ),
             ),
           ),
           suffixIcon: (widget.visibilityState == true)
@@ -148,11 +170,11 @@ class _MyTextFieldState extends State<MyTextField> {
           hintStyle:
               const TextStyle(color: hintColor, fontWeight: FontWeight.w200),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(70),
+            borderRadius: BorderRadius.circular(30),
             borderSide: BorderSide(color: borderColor),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(70),
+            borderRadius: BorderRadius.circular(30),
             borderSide: BorderSide(color: borderColor),
           ),
         ),
