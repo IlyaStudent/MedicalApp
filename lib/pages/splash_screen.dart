@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:medical_app/consts.dart';
+import 'package:medical_app/services/consts.dart';
 import 'package:medical_app/pages/auth/begin_page.dart';
 
 class SplashScreen extends StatefulWidget {

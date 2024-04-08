@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:medical_app/components/button.dart';
 import 'package:medical_app/components/doctor_card.dart';
-import 'package:medical_app/consts.dart';
+import 'package:medical_app/services/consts.dart';
 import 'package:medical_app/pages/doctors_pages/appoint_info.dart';
 import 'package:medical_app/pages/doctors_pages/comp_or_appoint.dart';
 import 'package:medical_app/services/doctor.dart';
@@ -106,6 +107,7 @@ class _DoctorPageState extends State<DoctorPage> {
       if (info.value["date"] == daySelected &&
           info.value["time"] == hourSelected) {
         info.value["client_id"] = FirebaseAuth.instance.currentUser?.uid;
+        info.value["appointment_id"] = info.key;
         return info.value;
       }
     }
@@ -126,7 +128,7 @@ class _DoctorPageState extends State<DoctorPage> {
         child: Padding(
           padding: EdgeInsets.symmetric(
               vertical: MediaQuery.sizeOf(context).height * 0.03,
-              horizontal: MediaQuery.sizeOf(context).width * 0.05),
+              horizontal: MediaQuery.sizeOf(context).width * 0.06),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -161,18 +163,20 @@ class _DoctorPageState extends State<DoctorPage> {
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.03,
               ),
-              _buildDates(context),
+              _buildDates(context).animate().slide(duration: 700.ms),
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.03,
               ),
               const Divider(
                 color: cardBorderColor,
                 thickness: 2,
-              ),
+              ).animate().slide(duration: 700.ms),
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.03,
               ),
-              (daySelected != null) ? _buildTimes(context) : SizedBox(),
+              (daySelected != null)
+                  ? _buildTimes(context).animate().slide()
+                  : SizedBox(),
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.05,
               ),
@@ -187,15 +191,16 @@ class _DoctorPageState extends State<DoctorPage> {
                             btnColor: Colors.white,
                             btnText: "Забронировать",
                             onTap: () {
-                              print(getAppointmentInfo());
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {
                                 return CompOrAppointPage(
+                                  doctor: widget.doctor,
                                   appointmentInfo: AppointInfo.fromJson(
-                                      getAppointmentInfo()),
+                                    getAppointmentInfo(),
+                                  ),
                                 );
                               }));
-                            }),
+                            }).animate().slideY(begin: 1),
                       ),
                     )
                   : const SizedBox(),

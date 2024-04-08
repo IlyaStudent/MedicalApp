@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:medical_app/consts.dart';
+import 'package:medical_app/services/consts.dart';
 
 class SearchButton extends StatelessWidget {
   const SearchButton({super.key});

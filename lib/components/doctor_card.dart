@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:medical_app/consts.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:medical_app/services/consts.dart';
 import 'package:medical_app/pages/doctors_pages/doctor_page.dart';
 import 'package:medical_app/services/doctor.dart';
 

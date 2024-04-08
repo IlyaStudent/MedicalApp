@@ -1,8 +1,9 @@
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:medical_app/components/doctor_card.dart';
 import 'package:medical_app/components/my_search_bar.dart';
-import 'package:medical_app/consts.dart';
+import 'package:medical_app/services/consts.dart';
 import 'package:medical_app/services/doctor.dart';
 import 'package:medical_app/services/firebase_database.dart';
 
@@ -107,11 +108,11 @@ class _SearchPageState extends State<SearchPage> {
                               return ListTile(
                                 title: DoctorCard(
                                   doctor: docotrsSearch[index],
-                                ),
+                                ).animate().slideX(),
                               );
                             },
                           )
-                        : _buildNoSearchResults()),
+                        : _buildNoSearchResults().animate().slide()),
               ),
             ],
           );

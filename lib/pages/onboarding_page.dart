@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medical_app/consts.dart';
+import 'package:medical_app/services/consts.dart';
 import 'package:medical_app/pages/intro_pages/intro_page.dart';
 import 'package:medical_app/pages/auth/start_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';

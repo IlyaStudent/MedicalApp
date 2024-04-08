@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:medical_app/components/button.dart';
 import 'package:medical_app/components/my_text_field.dart';
-import 'package:medical_app/consts.dart';
+import 'package:medical_app/services/consts.dart';
 
 class RegPage extends StatefulWidget {
   final Function()? onTap;

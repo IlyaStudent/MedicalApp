@@ -18,3 +18,4 @@ const searchIconColor = Color(0xffADADAD);
 const cardBorderColor = Color(0xffE8F3F1);
 const availabaleTimeColor = Color(0xffB3D3CE);
 const notAvailableTimeColor = Color(0xffDEECE9);
+const dateColor = Color(0xff555555);

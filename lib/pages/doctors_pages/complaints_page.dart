@@ -3,7 +3,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:medical_app/components/button.dart';
 import 'package:medical_app/components/my_text_field.dart';
-import 'package:medical_app/consts.dart';
+import 'package:medical_app/services/consts.dart';
 
 class ComplaintsPage extends StatefulWidget {
   final Function(String, String)? onBtnClick;
@@ -57,6 +57,7 @@ class _ComplaintsPageState extends State<ComplaintsPage> {
                   }
                 },
                 child: Row(
+                  mainAxisSize: MainAxisSize.max,
                   children: [
                     const Icon(
                       size: 40,
@@ -82,8 +83,9 @@ class _ComplaintsPageState extends State<ComplaintsPage> {
                   btnBackground: accentColor,
                   btnColor: Colors.white,
                   btnText: "Продолжить",
-                  onTap: () {
-                    widget.onBtnClick!(problemFile, problemDescController.text);
+                  onTap: () async {
+                    await widget.onBtnClick!(
+                        problemFile, problemDescController.text);
                   }),
             ],
           ),

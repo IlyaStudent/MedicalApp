@@ -6,6 +6,7 @@ class AppointInfo {
   String time;
   String clientId;
   String problemFile;
+  String appointmentId;
 
   AppointInfo({
     required this.date,
@@ -15,6 +16,7 @@ class AppointInfo {
     required this.time,
     required this.clientId,
     required this.problemFile,
+    required this.appointmentId,
   });
 
   AppointInfo copyWith(
@@ -24,7 +26,8 @@ class AppointInfo {
           String? problemDesc,
           String? time,
           String? clientId,
-          String? problemFile}) =>
+          String? problemFile,
+          String? appointmentId}) =>
       AppointInfo(
         date: date ?? this.date,
         doctorId: doctorId ?? this.doctorId,
@@ -33,16 +36,19 @@ class AppointInfo {
         time: time ?? this.time,
         clientId: clientId ?? this.clientId,
         problemFile: problemFile ?? this.problemFile,
+        appointmentId: appointmentId ?? this.appointmentId,
       );
 
   factory AppointInfo.fromJson(Map<String, dynamic> json) => AppointInfo(
-      date: DateTime.parse(json["date"]),
-      doctorId: json["doctor_id"],
-      isFree: json["isFree"],
-      problemDesc: json["problem_desc"],
-      time: json["time"],
-      clientId: json["client_id"],
-      problemFile: json["problem_file"]);
+        date: DateTime.parse(json["date"]),
+        doctorId: json["doctor_id"],
+        isFree: json["isFree"],
+        problemDesc: json["problem_desc"],
+        time: json["time"],
+        clientId: json["client_id"],
+        problemFile: json["problem_file"],
+        appointmentId: json["appointment_id"],
+      );
 
   Map<String, dynamic> toJson() => {
         "date":

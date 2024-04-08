@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medical_app/components/button.dart';
-import 'package:medical_app/consts.dart';
+import 'package:medical_app/services/consts.dart';
 import 'package:medical_app/pages/auth/stream_pade.dart';
 
 class StartPage extends StatefulWidget {

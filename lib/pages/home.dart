@@ -1,57 +1,40 @@
-import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:medical_app/consts.dart';
-import 'package:awesome_bottom_bar/widgets/inspired/inspired.dart';
+import 'package:medical_app/services/consts.dart';
 import 'package:medical_app/pages/nav_pages/account_page.dart';
 import 'package:medical_app/pages/nav_pages/appointments_page.dart';
 import 'package:medical_app/pages/doctors_pages/doctors_page.dart';
 import 'package:medical_app/pages/nav_pages/home_page.dart';
 import 'package:medical_app/pages/nav_pages/hospitals/hospitals_page.dart';
+import 'package:motion_tab_bar/MotionTabBar.dart';
+import 'package:motion_tab_bar/MotionTabBarController.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  final int pageNum;
+  const Home({super.key, this.pageNum = 2});
 
   @override
   State<Home> createState() => _HomeState();
-  static int visit = 2;
-
-  static void updateVisit(int newValue) {
-    visit = newValue;
-  }
 }
 
-class _HomeState extends State<Home> {
-  int visit = Home.visit;
-  void updateVisitValue(int newValue) {
-    Home.updateVisit(newValue);
-    setState(() {
-      // Вызов метода setState() для обновления отображения на экране
-    });
+class _HomeState extends State<Home> with TickerProviderStateMixin {
+  MotionTabBarController? _motionTabBarController;
+
+  @override
+  void initState() {
+    super.initState();
+    _motionTabBarController = MotionTabBarController(
+      initialIndex: widget.pageNum,
+      length: 5,
+      vsync: this,
+    );
   }
 
-  List<TabItem> items = [
-    const TabItem(
-      icon: Icons.medical_services_rounded,
-      title: 'Доктора',
-    ),
-    const TabItem(
-      icon: Icons.location_on_rounded,
-      title: 'Больница',
-    ),
-    const TabItem(
-      icon: Icons.home_rounded,
-      title: 'Главная',
-    ),
-    const TabItem(
-      icon: Icons.calendar_month_rounded,
-      title: 'Записи',
-    ),
-    const TabItem(
-      icon: Icons.account_box_rounded,
-      title: 'Аккаунт',
-    ),
-  ];
+  @override
+  void dispose() {
+    super.dispose();
+    _motionTabBarController!.dispose();
+  }
 
   void signUserOut() {
     FirebaseAuth.instance.signOut();
@@ -60,47 +43,61 @@ class _HomeState extends State<Home> {
   final List<String> _pagesTitles = [
     "Доктора",
     "Больницы",
-    "",
+    "Главная",
     "Записи",
     "Аккаунт"
+  ];
+
+  final List<IconData> _navbarIcons = [
+    Icons.medical_services_rounded,
+    Icons.location_on_rounded,
+    Icons.home_rounded,
+    Icons.calendar_month_rounded,
+    Icons.account_box_rounded
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomBarInspiredOutside(
-        isAnimated: true,
-        duration: Durations.extralong3,
-        items: items,
-        backgroundColor: Colors.white,
-        color: bodyTextColor,
-        colorSelected: Colors.white,
-        indexSelected: visit,
-        onTap: (int index) => setState(() {
-          visit = index;
-        }),
-        top: -28,
-        animated: false,
-        itemStyle: ItemStyle.circle,
-        chipStyle: const ChipStyle(
-            notchSmoothness: NotchSmoothness.softEdge, background: accentColor),
+      bottomNavigationBar: MotionTabBar(
+        controller: _motionTabBarController,
+        initialSelectedTab: "Главная",
+        useSafeArea: true,
+        labels: _pagesTitles,
+        icons: _navbarIcons,
+        tabSize: 50,
+        tabBarHeight: 55,
+        textStyle: const TextStyle(fontSize: 12, color: mainTextColor),
+        tabIconColor: bodyTextColor,
+        tabIconSize: 28.0,
+        tabIconSelectedSize: 26.0,
+        tabSelectedColor: accentColor,
+        tabIconSelectedColor: Colors.white,
+        tabBarColor: Colors.white,
+        onTabItemSelected: (int value) {
+          setState(() {
+            _motionTabBarController!.index = value;
+          });
+        },
       ),
       appBar: AppBar(
         title: Text(
-          _pagesTitles[visit],
-          style: TextStyle(fontWeight: FontWeight.w500, color: mainTextColor),
+          _pagesTitles[_motionTabBarController!.index],
+          style: const TextStyle(
+              fontWeight: FontWeight.w500, color: mainTextColor),
         ),
         centerTitle: true,
-        actions: visit == 4
+        actions: _motionTabBarController?.index == 4
             ? [
                 IconButton(
                     onPressed: signUserOut, icon: const Icon(Icons.logout)),
               ]
             : null,
       ),
-      body: IndexedStack(
-        index: visit,
-        children: [
+      body: TabBarView(
+        physics: const NeverScrollableScrollPhysics(),
+        controller: _motionTabBarController,
+        children: const [
           DoctorsPage(),
           HospitalsPage(),
           HomePage(),

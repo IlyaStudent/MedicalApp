@@ -1,15 +1,16 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+
 import 'package:medical_app/components/button.dart';
-import 'package:medical_app/consts.dart';
+import 'package:medical_app/services/consts.dart';
 import 'package:medical_app/services/firebase_database.dart';
 import 'package:medical_app/services/geo_files/app_lat_long.dart';
 import 'package:medical_app/services/geo_files/location_service.dart';
 import 'package:medical_app/services/geo_files/map_point.dart';
 import 'package:medical_app/pages/home.dart';
 import 'package:medical_app/services/preferences_service.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 class MapHospitals extends StatefulWidget {
@@ -55,7 +56,7 @@ class _MapHospitalsState extends State<MapHospitals> {
         opacity: 1,
         icon: PlacemarkIcon.single(
           PlacemarkIconStyle(
-            anchor: Offset(0.5, 1),
+            anchor: const Offset(0.5, 1),
             image: BitmapDescriptor.fromAssetImage(
               'lib/assets/img/hospital_loc.png',
             ),
@@ -143,10 +144,10 @@ class _MapHospitalsState extends State<MapHospitals> {
               mapObjects: mapObjects,
             );
           } else {
-            return Center(child: Text("Error fetching map objects"));
+            return const Center(child: Text("Error fetching map objects"));
           }
         } else {
-          return Center(
+          return const Center(
               child: CircularProgressIndicator(
             valueColor: AlwaysStoppedAnimation(accentColor),
           ));
@@ -175,7 +176,7 @@ class _ModalBodyView extends StatefulWidget {
 class _ModalBodyViewState extends State<_ModalBodyView> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.sizeOf(context).width,
       child: Padding(
         padding:
@@ -202,14 +203,14 @@ class _ModalBodyViewState extends State<_ModalBodyView> {
               const SizedBox(height: 5),
               Text(
                 "Часы работы: ${widget.point.workHours}",
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14,
                   color: hintColor,
                 ),
               ),
               Text(
                 "Тел: ${widget.point.phoneNumber}",
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14,
                   color: hintColor,
                 ),
@@ -223,8 +224,10 @@ class _ModalBodyViewState extends State<_ModalBodyView> {
                     PreferncesServices()
                         .setPreference("HospitalBranch", widget.point.name);
                     setState(() {
-                      Home.updateVisit(2);
-                      Navigator.pushReplacementNamed(context, "/homepage");
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Home()));
                     });
                   })
             ]),

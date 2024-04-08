@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:medical_app/consts.dart';
+import 'package:medical_app/services/consts.dart';
 
 class IntroPage extends StatelessWidget {
   final String imagePath;

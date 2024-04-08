@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:medical_app/consts.dart';
+import 'package:medical_app/services/consts.dart';
 import 'package:medical_app/pages/nav_pages/hospitals/list_hospitals.dart';
 import 'package:medical_app/pages/nav_pages/hospitals/map_hospitals.dart';
-import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 class HospitalsPage extends StatefulWidget {
   const HospitalsPage({super.key});
@@ -27,6 +26,7 @@ class _HospitalsPageState extends State<HospitalsPage>
     _tabController = TabController(length: 2, vsync: this);
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -63,9 +63,9 @@ class _HospitalsPageState extends State<HospitalsPage>
           ),
         ),
         body: TabBarView(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           controller: _tabController,
-          children: [ListHospitals(), MapHospitals()],
+          children: const [ListHospitals(), MapHospitals()],
         ));
   }
 }

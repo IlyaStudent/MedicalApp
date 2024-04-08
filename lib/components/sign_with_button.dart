@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:medical_app/consts.dart';
+import 'package:medical_app/services/consts.dart';
 
 class SignWithButton extends StatelessWidget {
   final String btnText;

@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:medical_app/consts.dart';
+import 'package:medical_app/services/consts.dart';
 
 class Button extends StatelessWidget {
   final Color btnBackground;

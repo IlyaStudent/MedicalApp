@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medical_app/components/button.dart';
-import 'package:medical_app/consts.dart';
+import 'package:medical_app/services/consts.dart';
 import 'package:medical_app/services/firebase_database.dart';
 import 'package:medical_app/pages/home.dart';
 import 'package:medical_app/services/preferences_service.dart';
@@ -115,8 +115,8 @@ class _ListHospitalsState extends State<ListHospitals> {
                             data[keys.elementAt(selectedCheckBox!)]["name"]
                                 .toString());
                         setState(() {
-                          Home.updateVisit(2);
-                          Navigator.pushReplacementNamed(context, "/homepage");
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => Home()));
                         });
                       },
                     )

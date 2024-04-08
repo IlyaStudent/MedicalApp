@@ -47,8 +47,12 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     Navigator.pop(context);
                     setState(() {
-                      Home.updateVisit(1);
-                      Navigator.of(context).pushNamed('/homepage');
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Home(
+                                    pageNum: 1,
+                                  )));
                     }); // Возвращаемся на предыдущий экран
                   },
                 )
