@@ -1,3 +1,5 @@
+import 'package:medical_app/services/firebase_database.dart';
+
 class Doctor {
   String doctorId;
   String fullName;
@@ -18,6 +20,11 @@ class Doctor {
     required this.desc,
     required this.hospitalName,
   });
+
+  Future<void> updateImageUrl() async {
+    String imageUrl = await FireBaseDatabase().updateOneImageUrl(this.photo);
+    this.photo = imageUrl;
+  }
 
   Doctor copyWith({
     String? doctorId,

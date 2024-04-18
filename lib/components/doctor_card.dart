@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:medical_app/services/consts.dart';
-import 'package:medical_app/pages/doctors_pages/doctor_page.dart';
+import 'package:medical_app/pages/nav_pages/doctors_pages/doctor_page.dart';
 import 'package:medical_app/services/doctor.dart';
 
 class DoctorCard extends StatelessWidget {
@@ -15,6 +15,7 @@ class DoctorCard extends StatelessWidget {
     return GestureDetector(
       onTap: (borderColor == cardBorderColor)
           ? () {
+              print(doctor.photo);
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return DoctorPage(doctor: doctor);
               }));
@@ -39,7 +40,7 @@ class DoctorCard extends StatelessWidget {
                     width: 120,
                     height: 120,
                     fit: BoxFit.scaleDown,
-                  ),
+                  ).animate().fadeIn(delay: 500.ms),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(15),

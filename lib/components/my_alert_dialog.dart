@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:medical_app/components/button.dart';
 import 'package:medical_app/services/consts.dart';
@@ -9,11 +7,14 @@ class MyAlertDialog extends StatelessWidget {
   final Function()? function;
   final String titleText;
   final String messageText;
+  final String btnText;
+
   const MyAlertDialog(
       {super.key,
       this.function,
       required this.titleText,
-      required this.messageText});
+      required this.messageText,
+      this.btnText = "На главную"});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class MyAlertDialog extends StatelessWidget {
             height: MediaQuery.sizeOf(context).height * 0.05,
           ),
           Container(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50), color: gradeintColor),
             child: const Icon(
@@ -49,19 +50,19 @@ class MyAlertDialog extends StatelessWidget {
             height: MediaQuery.sizeOf(context).height * 0.01,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Text(
               messageText,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, color: hintColor),
+              style: const TextStyle(fontSize: 16, color: hintColor),
             ),
           ).animate().moveX(),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 80, vertical: 40),
+            padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 40),
             child: Button(
                 btnBackground: accentColor,
                 btnColor: Colors.white,
-                btnText: "На главную",
+                btnText: btnText,
                 onTap: function),
           ).animate().moveX()
         ],

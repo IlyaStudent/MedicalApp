@@ -45,7 +45,10 @@ class _RegPageState extends State<RegPage> {
 
   void signUserUp() async {
     if (isChecked == false) {
-      errorMessage = "Примите условия использования";
+      setState(() {
+        errorMessage = "Примите условия использования";
+      });
+
       return;
     }
     showDialog(
@@ -64,11 +67,10 @@ class _RegPageState extends State<RegPage> {
       );
     } on FirebaseAuthException catch (e) {
       setState(() {
-        print(e.message);
-        print(e.code);
         errorMessage = getErrorDescription(e.code);
       });
     } finally {
+      FirebaseAuth.instance.currentUser!.updateDisplayName(nameController.text);
       Navigator.of(context, rootNavigator: true).pop();
     }
   }

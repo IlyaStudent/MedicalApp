@@ -6,6 +6,7 @@ class Button extends StatelessWidget {
   final Color btnColor;
   final String btnText;
   final Color? borderColor;
+  final double borderRadius;
   final Function()? onTap;
 
   const Button(
@@ -14,7 +15,8 @@ class Button extends StatelessWidget {
       required this.btnColor,
       required this.btnText,
       required this.onTap,
-      this.borderColor});
+      this.borderColor,
+      this.borderRadius = 70});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class Button extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             color: btnBackground,
-            borderRadius: BorderRadius.circular(70),
+            borderRadius: BorderRadius.circular(borderRadius),
             border: Border.all(
                 color: (borderColor != null) ? borderColor! : accentColor,
                 width: 1.0)),

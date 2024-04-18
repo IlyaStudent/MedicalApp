@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:medical_app/services/consts.dart';
 import 'package:medical_app/pages/home.dart';
-import 'package:medical_app/pages/nav_pages/hospitals/hospitals_page.dart';
 import 'package:medical_app/pages/nav_pages/search_pages/search_page.dart';
 import 'package:medical_app/pages/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -32,7 +31,6 @@ class MyApp extends StatelessWidget {
       home: const SplashScreen(),
       routes: {
         '/homepage': (context) => Home(),
-        '/search': (context) => SearchPage(),
       },
     );
   }

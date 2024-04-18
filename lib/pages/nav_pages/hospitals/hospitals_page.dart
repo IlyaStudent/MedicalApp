@@ -30,7 +30,12 @@ class _HospitalsPageState extends State<HospitalsPage>
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          toolbarHeight: 0,
+          toolbarHeight: 50,
+          centerTitle: true,
+          title: const Text(
+            "Больницы",
+            style: TextStyle(fontWeight: FontWeight.w500, color: mainTextColor),
+          ),
           bottom: TabBar(
             labelColor: accentColor,
             unselectedLabelColor: hintColor,

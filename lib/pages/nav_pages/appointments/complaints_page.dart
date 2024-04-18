@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:medical_app/components/button.dart';
 import 'package:medical_app/components/my_text_field.dart';
 import 'package:medical_app/services/consts.dart';
@@ -88,7 +89,7 @@ class _ComplaintsPageState extends State<ComplaintsPage> {
                         problemFile, problemDescController.text);
                   }),
             ],
-          ),
+          ).animate().then().scale(),
         ),
       ),
     );

@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:medical_app/services/consts.dart';
 import 'package:medical_app/pages/nav_pages/account_page.dart';
-import 'package:medical_app/pages/nav_pages/appointments_page.dart';
-import 'package:medical_app/pages/doctors_pages/doctors_page.dart';
+import 'package:medical_app/pages/nav_pages/appointments/appointments_page.dart';
+import 'package:medical_app/pages/nav_pages/doctors_pages/doctors_page.dart';
 import 'package:medical_app/pages/nav_pages/home_page.dart';
 import 'package:medical_app/pages/nav_pages/hospitals/hospitals_page.dart';
 import 'package:motion_tab_bar/MotionTabBar.dart';
@@ -36,10 +36,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     _motionTabBarController!.dispose();
   }
 
-  void signUserOut() {
-    FirebaseAuth.instance.signOut();
-  }
-
   final List<String> _pagesTitles = [
     "Доктора",
     "Больницы",
@@ -61,13 +57,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     return Scaffold(
       bottomNavigationBar: MotionTabBar(
         controller: _motionTabBarController,
-        initialSelectedTab: "Главная",
+        initialSelectedTab: _pagesTitles[_motionTabBarController!.index],
         useSafeArea: true,
         labels: _pagesTitles,
         icons: _navbarIcons,
         tabSize: 50,
-        tabBarHeight: 55,
-        textStyle: const TextStyle(fontSize: 12, color: mainTextColor),
+        tabBarHeight: 60,
+        textStyle: const TextStyle(
+            fontSize: 12, color: bodyTextColor, fontWeight: FontWeight.w500),
         tabIconColor: bodyTextColor,
         tabIconSize: 28.0,
         tabIconSelectedSize: 26.0,
@@ -80,20 +77,24 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           });
         },
       ),
-      appBar: AppBar(
-        title: Text(
-          _pagesTitles[_motionTabBarController!.index],
-          style: const TextStyle(
-              fontWeight: FontWeight.w500, color: mainTextColor),
-        ),
-        centerTitle: true,
-        actions: _motionTabBarController?.index == 4
-            ? [
-                IconButton(
-                    onPressed: signUserOut, icon: const Icon(Icons.logout)),
-              ]
-            : null,
-      ),
+      // appBar: (_motionTabBarController!.index != 4)
+      //     ? AppBar(
+      //         title: Text(
+      //           (_motionTabBarController!.index == 2)
+      //               ? ""
+      //               : _pagesTitles[_motionTabBarController!.index],
+      //           style: const TextStyle(
+      //               fontWeight: FontWeight.w500, color: mainTextColor),
+      //         ),
+      //         centerTitle: true,
+      //         // actions: _motionTabBarController?.index == 4
+      //         //     ? [
+      //         //         IconButton(
+      //         //             onPressed: signUserOut, icon: const Icon(Icons.logout)),
+      //         //       ]
+      //         //     : null,
+      //       )
+      //     : null,
       body: TabBarView(
         physics: const NeverScrollableScrollPhysics(),
         controller: _motionTabBarController,

@@ -18,13 +18,11 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
   void togglePages() {
     setState(() {
       showLoginPage = !showLoginPage;
-      print(showLoginPage);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    print('logOrReg');
     if (showLoginPage) {
       return LoginPage(
         onTap: togglePages,

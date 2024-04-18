@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:medical_app/components/button.dart';
+import 'package:medical_app/components/shimmer_hospital_info.dart';
 import 'package:medical_app/services/consts.dart';
 import 'package:medical_app/services/firebase_database.dart';
 import 'package:medical_app/pages/home.dart';
@@ -28,15 +30,11 @@ class _ListHospitalsState extends State<ListHospitals> {
       future: resFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: SizedBox(
-              width: 50,
-              height: 50,
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation(accentColor),
-              ),
-            ),
-          );
+          return ListView.builder(itemBuilder: (context, index) {
+            return ListTile(
+              title: ShimmerHospitalInfo(),
+            );
+          });
         }
         if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
@@ -115,8 +113,10 @@ class _ListHospitalsState extends State<ListHospitals> {
                             data[keys.elementAt(selectedCheckBox!)]["name"]
                                 .toString());
                         setState(() {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Home()));
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (context) => const Home()),
+                              (route) => false);
                         });
                       },
                     )

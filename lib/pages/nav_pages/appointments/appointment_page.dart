@@ -5,7 +5,7 @@ import 'package:medical_app/components/doctor_card.dart';
 import 'package:medical_app/components/my_alert_dialog.dart';
 import 'package:medical_app/pages/home.dart';
 import 'package:medical_app/services/consts.dart';
-import 'package:medical_app/pages/doctors_pages/appoint_info.dart';
+import 'package:medical_app/services/appoint_info.dart';
 import 'package:medical_app/services/doctor.dart';
 
 class AppointmentPage extends StatelessWidget {
@@ -60,11 +60,6 @@ class AppointmentPage extends StatelessWidget {
               "Запись создана, всю информацию вы можете просмотреть в разделе \"Записи\"",
           function: () {
             Navigator.of(context).pop();
-
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Home()),
-            );
           },
         );
       },
@@ -89,7 +84,7 @@ class AppointmentPage extends StatelessWidget {
               horizontal: MediaQuery.sizeOf(context).width * 0.06),
           child: Column(
             children: [
-              DoctorCard(doctor: doctor).animate().slideX(),
+              DoctorCard(doctor: doctor),
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.03,
               ),
@@ -115,7 +110,7 @@ class AppointmentPage extends StatelessWidget {
                     ),
                   )
                 ],
-              ).animate().slideX(),
+              ),
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.01,
               ),
@@ -148,7 +143,7 @@ class AppointmentPage extends StatelessWidget {
                     ),
                   ),
                 ],
-              ).animate().slideX(),
+              ),
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.01,
               ),
@@ -179,7 +174,7 @@ class AppointmentPage extends StatelessWidget {
                     ),
                   )
                 ],
-              ).animate().slideX(),
+              ),
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.01,
               ),
@@ -216,7 +211,7 @@ class AppointmentPage extends StatelessWidget {
                     ),
                   ),
                 ],
-              ).animate().slideX(),
+              ),
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.01,
               ),
@@ -259,7 +254,7 @@ class AppointmentPage extends StatelessWidget {
                         style: TextStyle(color: hintColor),
                       ),
                     ]),
-              ).animate().slideX(),
+              ),
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.01,
               ),
@@ -277,7 +272,7 @@ class AppointmentPage extends StatelessWidget {
                   "Оплата после консультации! \n",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
-              ).animate().slideX(),
+              ),
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.04,
               ),
@@ -311,16 +306,24 @@ class AppointmentPage extends StatelessWidget {
                       btnText: "Записаться",
                       onTap: () {
                         onSubmitClick!();
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                                builder: (context) => const Home()),
+                            (route) => false);
+                        // Navigator.pushReplacement(
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) => const Home()),
+                        // );
                         showConfirmationDialog(context);
                       },
                     ),
                   ),
                 ],
-              ).animate().then(delay: 200.ms).slideY(begin: 1.5),
+              ),
             ],
           ),
         ),
-      ),
+      ).animate().then().scale(),
     );
   }
 }

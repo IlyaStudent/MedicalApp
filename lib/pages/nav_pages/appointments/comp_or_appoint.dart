@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:medical_app/pages/doctors_pages/appoint_info.dart';
-import 'package:medical_app/pages/doctors_pages/appointment_page.dart';
-import 'package:medical_app/pages/doctors_pages/complaints_page.dart';
+import 'package:medical_app/services/appoint_info.dart';
+import 'package:medical_app/pages/nav_pages/appointments/appointment_page.dart';
+import 'package:medical_app/pages/nav_pages/appointments/complaints_page.dart';
 import 'package:medical_app/services/doctor.dart';
 import 'package:medical_app/services/firebase_database.dart';
 

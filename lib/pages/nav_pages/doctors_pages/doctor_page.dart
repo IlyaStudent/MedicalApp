@@ -5,8 +5,8 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:medical_app/components/button.dart';
 import 'package:medical_app/components/doctor_card.dart';
 import 'package:medical_app/services/consts.dart';
-import 'package:medical_app/pages/doctors_pages/appoint_info.dart';
-import 'package:medical_app/pages/doctors_pages/comp_or_appoint.dart';
+import 'package:medical_app/services/appoint_info.dart';
+import 'package:medical_app/pages/nav_pages/appointments/comp_or_appoint.dart';
 import 'package:medical_app/services/doctor.dart';
 import 'package:intl/intl.dart';
 import 'package:medical_app/services/firebase_database.dart';
@@ -163,19 +163,19 @@ class _DoctorPageState extends State<DoctorPage> {
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.03,
               ),
-              _buildDates(context).animate().slide(duration: 700.ms),
+              _buildDates(context),
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.03,
               ),
               const Divider(
                 color: cardBorderColor,
                 thickness: 2,
-              ).animate().slide(duration: 700.ms),
+              ),
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.03,
               ),
               (daySelected != null)
-                  ? _buildTimes(context).animate().slide()
+                  ? _buildTimes(context).animate().scale()
                   : SizedBox(),
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.05,
@@ -196,16 +196,16 @@ class _DoctorPageState extends State<DoctorPage> {
                                 return CompOrAppointPage(
                                   doctor: widget.doctor,
                                   appointmentInfo: AppointInfo.fromJson(
-                                    getAppointmentInfo(),
+                                    json: getAppointmentInfo(),
                                   ),
                                 );
                               }));
-                            }).animate().slideY(begin: 1),
+                            }).animate().scale(),
                       ),
                     )
                   : const SizedBox(),
             ],
-          ),
+          ).animate().scale(),
         ),
       ),
     );
@@ -318,7 +318,7 @@ class _DoctorPageState extends State<DoctorPage> {
               });
             }
           : null,
-      child: Padding(
+      child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 6),
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),

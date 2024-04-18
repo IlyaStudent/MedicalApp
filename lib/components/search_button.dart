@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:medical_app/pages/nav_pages/search_pages/search_page.dart';
 import 'package:medical_app/services/consts.dart';
 
 class SearchButton extends StatelessWidget {
-  const SearchButton({super.key});
+  final bool isAll;
+  const SearchButton({super.key, required this.isAll});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,9 @@ class SearchButton extends StatelessWidget {
         ),
       ),
       onTap: () {
-        Navigator.pushNamed(context, "/search");
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return SearchPage(isAll: isAll);
+        }));
       },
     );
   }

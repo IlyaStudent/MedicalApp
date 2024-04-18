@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:medical_app/components/button.dart';
 import 'package:medical_app/components/my_text_field.dart';
 import 'package:medical_app/components/sign_with_button.dart';
+import 'package:medical_app/services/auth_service.dart';
 import 'package:medical_app/services/consts.dart';
 
 class LoginPage extends StatefulWidget {
@@ -198,9 +200,10 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               // sign with buttons
-              const SignWithButton(
+              SignWithButton(
                 btnText: "Войти через Google",
                 imagePath: 'lib/assets/img/google.png',
+                func: AuthService().signInWithGoogle,
               ),
 
               SizedBox(
