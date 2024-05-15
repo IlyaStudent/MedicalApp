@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:medical_app/components/button.dart';
 import 'package:medical_app/components/my_text_field.dart';
+import 'package:medical_app/pages/auth/email_verify_page.dart';
 import 'package:medical_app/services/consts.dart';
 
 class RegPage extends StatefulWidget {
@@ -65,12 +66,15 @@ class _RegPageState extends State<RegPage> {
         email: emailController.text,
         password: passwordController.text,
       );
+
+      await FirebaseAuth.instance.currentUser?.sendEmailVerification();
+      await FirebaseAuth.instance.currentUser
+          ?.updateDisplayName(nameController.text);
     } on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = getErrorDescription(e.code);
       });
     } finally {
-      FirebaseAuth.instance.currentUser!.updateDisplayName(nameController.text);
       Navigator.of(context, rootNavigator: true).pop();
     }
   }

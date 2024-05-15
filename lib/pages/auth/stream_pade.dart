@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:medical_app/pages/auth/email_verify_page.dart';
 import 'package:medical_app/pages/auth/login_or_register.dart';
+import 'package:medical_app/pages/auth/verify_stream.dart';
 import 'package:medical_app/pages/home.dart';
 
 class StreamPage extends StatelessWidget {
@@ -14,7 +16,10 @@ class StreamPage extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Home();
+            if (FirebaseAuth.instance.currentUser!.emailVerified) {
+              return const Home();
+            }
+            return const VerifyStream();
           } else {
             return LoginOrRegisterPage(showLoginPage: showLoginPage);
           }

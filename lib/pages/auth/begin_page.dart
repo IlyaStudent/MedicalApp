@@ -9,10 +9,16 @@ class BeginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (FirebaseAuth.instance.currentUser != null) {
+    print(FirebaseAuth.instance.currentUser);
+    if (FirebaseAuth.instance.currentUser != null &&
+        FirebaseAuth.instance.currentUser!.emailVerified == false) {
+      FirebaseAuth.instance.currentUser!.delete();
+
+      return const OnBoardingPage();
+    } else if (FirebaseAuth.instance.currentUser != null) {
       return const StreamPage(showLoginPage: true);
     } else {
-      return OnBoardingPage();
+      return const OnBoardingPage();
     }
   }
 }
