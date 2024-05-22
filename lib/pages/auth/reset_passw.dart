@@ -7,7 +7,7 @@ class RecoverPasswPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Сброс пароля",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),

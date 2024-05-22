@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:medical_app/components/button.dart';
 import 'package:medical_app/components/my_text_field.dart';
 import 'package:medical_app/components/sign_with_button.dart';
@@ -9,7 +8,7 @@ import 'package:medical_app/services/consts.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
-  LoginPage({super.key, this.onTap});
+  const LoginPage({super.key, this.onTap});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -167,7 +166,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               SizedBox(
-                height: MediaQuery.sizeOf(context).height / 30,
+                height: MediaQuery.sizeOf(context).height / 20,
               ),
 
               // or text
@@ -196,7 +195,7 @@ class _LoginPageState extends State<LoginPage> {
               ]),
 
               SizedBox(
-                height: MediaQuery.sizeOf(context).height / 30,
+                height: MediaQuery.sizeOf(context).height / 20,
               ),
 
               // sign with buttons
@@ -204,24 +203,6 @@ class _LoginPageState extends State<LoginPage> {
                 btnText: "Войти через Google",
                 imagePath: 'lib/assets/img/google.png',
                 func: AuthService().signInWithGoogle,
-              ),
-
-              SizedBox(
-                height: MediaQuery.sizeOf(context).height / 50,
-              ),
-
-              const SignWithButton(
-                btnText: "Войти через VK",
-                imagePath: 'lib/assets/img/vk.png',
-              ),
-
-              SizedBox(
-                height: MediaQuery.sizeOf(context).height / 50,
-              ),
-
-              const SignWithButton(
-                btnText: "Войти через ГосУслуги",
-                imagePath: 'lib/assets/img/gosuslugi.png',
               ),
             ],
           ),

@@ -4,7 +4,7 @@ import 'package:medical_app/pages/auth/email_verify_page.dart';
 import 'package:medical_app/pages/home.dart';
 
 class VerifyStream extends StatefulWidget {
-  const VerifyStream({Key? key}) : super(key: key);
+  const VerifyStream({super.key});
 
   @override
   _VerifyStreamState createState() => _VerifyStreamState();

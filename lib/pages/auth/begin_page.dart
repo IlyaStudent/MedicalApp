@@ -9,7 +9,6 @@ class BeginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(FirebaseAuth.instance.currentUser);
     if (FirebaseAuth.instance.currentUser != null &&
         FirebaseAuth.instance.currentUser!.emailVerified == false) {
       FirebaseAuth.instance.currentUser!.delete();

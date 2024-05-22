@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:medical_app/components/button.dart';
 import 'package:medical_app/components/category_btn.dart';
 import 'package:medical_app/components/search_button.dart';
@@ -63,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                                     pageNum: 1,
                                   )),
                           (route) => false);
-                    }); // Возвращаемся на предыдущий экран
+                    });
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -129,7 +127,6 @@ class _HomePageState extends State<HomePage> {
                       }).toList()),
                 ),
 
-                // fill medical card
                 Padding(
                   padding: EdgeInsets.only(
                       bottom: MediaQuery.sizeOf(context).height * 0.03),
@@ -156,12 +153,20 @@ class _HomePageState extends State<HomePage> {
                             SizedBox(
                               height: MediaQuery.sizeOf(context).height * 0.03,
                             ),
-                            const Button(
+                            Button(
                                 borderRadius: 10,
                                 btnBackground: accentColor,
                                 btnColor: Colors.white,
-                                btnText: "Пройти тест",
-                                onTap: null)
+                                btnText: "Записаться",
+                                onTap: () {
+                                  print("s");
+                                  Navigator.of(context).pushAndRemoveUntil(
+                                      MaterialPageRoute(
+                                          builder: (context) => const Home(
+                                                pageNum: 0,
+                                              )),
+                                      (route) => false);
+                                })
                           ],
                         ),
                         Stack(
@@ -175,26 +180,19 @@ class _HomePageState extends State<HomePage> {
                                   borderRadius: BorderRadius.circular(100),
                                   border: Border.all(
                                       width: 20,
-                                      color:
-                                          Color.fromARGB(255, 243, 255, 253))),
+                                      color: const Color.fromARGB(
+                                          255, 243, 255, 253))),
                             ),
                             Padding(
-                              padding: EdgeInsets.all(5),
+                              padding: const EdgeInsets.all(5),
                               child: Image.asset("lib/assets/img/doctor2.png"),
                             ),
                           ],
                         )
-
-                        // Padding(
-                        //   padding: EdgeInsets.all(5),
-                        //   child: Image.asset("lib/assets/img/doctor1.png"),
-                        // )
                       ],
                     ),
                   ),
                 )
-
-                // Top doctors
               ],
             ),
           ),

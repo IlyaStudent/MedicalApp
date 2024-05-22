@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:medical_app/services/consts.dart';
 import 'package:medical_app/pages/nav_pages/account_page.dart';

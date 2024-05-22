@@ -2,12 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:medical_app/components/button.dart';
 import 'package:medical_app/components/my_text_field.dart';
-import 'package:medical_app/pages/auth/email_verify_page.dart';
+import 'package:medical_app/pages/auth/rules_page.dart';
 import 'package:medical_app/services/consts.dart';
 
 class RegPage extends StatefulWidget {
   final Function()? onTap;
-  RegPage({super.key, this.onTap});
+  const RegPage({super.key, this.onTap});
 
   @override
   State<RegPage> createState() => _RegPageState();
@@ -162,7 +162,8 @@ class _RegPageState extends State<RegPage> {
                           activeColor: accentColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
-                            side: BorderSide(color: primaryColor, width: 5.0),
+                            side: const BorderSide(
+                                color: primaryColor, width: 5.0),
                           ),
                           value: isChecked,
                           onChanged: (newBool) {
@@ -185,6 +186,10 @@ class _RegPageState extends State<RegPage> {
                               style: TextStyle(color: mainTextColor),
                               "Я принимаю "),
                           GestureDetector(
+                            onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const RulesPage())),
                             child: const Text(
                                 style: TextStyle(color: accentColor),
                                 "правила использования"),

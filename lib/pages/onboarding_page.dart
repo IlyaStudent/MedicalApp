@@ -6,13 +6,12 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({super.key});
-
   @override
   State<OnBoardingPage> createState() => _OnBoardingPageState();
 }
 
 class _OnBoardingPageState extends State<OnBoardingPage> {
-  PageController _controller = PageController();
+  final PageController _controller = PageController();
   bool onLastPage = false;
 
   @override
@@ -49,7 +48,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           GestureDetector(
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return StartPage();
+                return const StartPage();
               }));
             },
             child: Container(
@@ -81,15 +80,14 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   // next button
                   GestureDetector(
                     onTap: () {
-                      print(onLastPage);
                       if (onLastPage) {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return StartPage();
+                          return const StartPage();
                         }));
                       }
                       _controller.nextPage(
-                          duration: Duration(milliseconds: 300),
+                          duration: const Duration(milliseconds: 300),
                           curve: Curves.ease);
                     },
                     child: Container(
