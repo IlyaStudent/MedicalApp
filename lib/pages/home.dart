@@ -76,24 +76,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           });
         },
       ),
-      // appBar: (_motionTabBarController!.index != 4)
-      //     ? AppBar(
-      //         title: Text(
-      //           (_motionTabBarController!.index == 2)
-      //               ? ""
-      //               : _pagesTitles[_motionTabBarController!.index],
-      //           style: const TextStyle(
-      //               fontWeight: FontWeight.w500, color: mainTextColor),
-      //         ),
-      //         centerTitle: true,
-      //         // actions: _motionTabBarController?.index == 4
-      //         //     ? [
-      //         //         IconButton(
-      //         //             onPressed: signUserOut, icon: const Icon(Icons.logout)),
-      //         //       ]
-      //         //     : null,
-      //       )
-      //     : null,
       body: TabBarView(
         physics: const NeverScrollableScrollPhysics(),
         controller: _motionTabBarController,
