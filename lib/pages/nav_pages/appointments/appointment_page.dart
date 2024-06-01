@@ -77,7 +77,6 @@ class AppointmentPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        physics: const NeverScrollableScrollPhysics(),
         child: Padding(
           padding: EdgeInsets.symmetric(
               vertical: MediaQuery.sizeOf(context).height * 0.03,

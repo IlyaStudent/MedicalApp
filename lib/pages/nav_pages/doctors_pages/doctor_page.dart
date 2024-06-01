@@ -271,7 +271,7 @@ class _DoctorPageState extends State<DoctorPage> {
         child: Container(
           padding: EdgeInsets.symmetric(
               vertical: 10,
-              horizontal: MediaQuery.sizeOf(context).width * 0.085),
+              horizontal: MediaQuery.sizeOf(context).width * 0.07),
           decoration: BoxDecoration(
               color: (hourSelected != null)
                   ? (hourSelected == workHour)

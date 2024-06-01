@@ -85,6 +85,9 @@ class FireBaseDatabase {
       QuerySnapshot querySnapshot = await _firestore
           .collection('Doctors')
           .where("spec", isEqualTo: category)
+          .where("hospital_name",
+              isEqualTo:
+                  await PreferncesServices().getPreference("HospitalBranch"))
           .get();
 
       for (var doc in querySnapshot.docs) {

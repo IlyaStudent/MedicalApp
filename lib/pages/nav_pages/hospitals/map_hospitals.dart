@@ -133,6 +133,7 @@ class _MapHospitalsState extends State<MapHospitals> {
           if (snapshot.hasData) {
             List<MapObject<dynamic>> mapObjects =
                 snapshot.data!.cast<MapObject<dynamic>>();
+            print(mapObjects);
             return YandexMap(
               onMapCreated: (controller) {
                 _initMapController(controller);

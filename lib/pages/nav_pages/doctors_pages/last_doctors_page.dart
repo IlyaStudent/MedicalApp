@@ -50,8 +50,8 @@ class _LastDoctorsPageState extends State<LastDoctorsPage> {
                     ? []
                     : List.generate(lastDoctorsList!.length, (indexRow) {
                         return Padding(
-                          padding:
-                              EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 20),
                           child: DoctorCard(
                               doctor: Doctor.fromJson(
                                   lastDoctorsList![indexRow].keys.toList()[0],

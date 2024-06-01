@@ -50,7 +50,7 @@ class _AppointmentCardState extends State<AppointmentCard> {
         return MyAlertDialog(
           titleText: "Запись отменена",
           messageText: "Запись успешно отменена",
-          btnText: "Продолжить",
+          btnText: "Далее",
           function: () {
             Navigator.of(context).pop();
           },

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:medical_app/components/button.dart';
 import 'package:medical_app/components/my_text_field.dart';
 import 'package:medical_app/components/sign_with_button.dart';
+import 'package:medical_app/pages/auth/forget_passw_page.dart';
 import 'package:medical_app/services/auth_service.dart';
 import 'package:medical_app/services/consts.dart';
 
@@ -126,12 +127,17 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               GestureDetector(
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ForgetPasswordPage(),
+                      )),
                   child: const Text(
-                "Забыли пароль?",
-                style:
-                    TextStyle(color: accentColor, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.start,
-              )),
+                    "Забыли пароль?",
+                    style: TextStyle(
+                        color: accentColor, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.start,
+                  )),
 
               SizedBox(
                 height: MediaQuery.sizeOf(context).height / 100,
