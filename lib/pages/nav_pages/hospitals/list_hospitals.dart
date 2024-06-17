@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:medical_app/components/button.dart';
 import 'package:medical_app/components/shimmer_hospital_info.dart';
 import 'package:medical_app/services/consts.dart';
@@ -31,7 +30,7 @@ class _ListHospitalsState extends State<ListHospitals> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return ListView.builder(itemBuilder: (context, index) {
-            return ListTile(
+            return const ListTile(
               title: ShimmerHospitalInfo(),
             );
           });
@@ -40,7 +39,6 @@ class _ListHospitalsState extends State<ListHospitals> {
           return Text('Error: ${snapshot.error}');
         }
 
-        // Получаем данные из Future
         Map<String, dynamic>? data = snapshot.data;
         Iterable<String> keys = data!.keys;
 

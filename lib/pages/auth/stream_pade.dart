@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:medical_app/pages/auth/email_verify_page.dart';
 import 'package:medical_app/pages/auth/login_or_register.dart';
 import 'package:medical_app/pages/auth/verify_stream.dart';
 import 'package:medical_app/pages/home.dart';

@@ -49,15 +49,12 @@ dependencies:
   readmore: ^3.0.0
   file_picker: ^8.0.0+1
   flutter_animate: ^4.5.0
-  # curved_navigation_bar: ^1.0.3
-  # transitioned_indexed_stack: ^1.0.2
   motion_tab_bar: ^2.0.4
   segmented_button_slide: ^1.0.4
   flutter_file_downloader: ^1.2.1
-  # open_file: ^3.3.2
   open_file_plus: ^3.4.1+1
   shimmer: ^3.0.0
-  yandex_mapkit_lite: ^2.0.1
+  yandex_mapkit_lite: 2.0.1
   google_sign_in: ^6.2.1
 
 dev_dependencies:

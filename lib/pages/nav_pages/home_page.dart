@@ -50,7 +50,6 @@ class _HomePageState extends State<HomePage> {
                 horizontal: MediaQuery.sizeOf(context).width * 0.1),
             child: Column(
               children: [
-                // hospital chosen + arrow
                 GestureDetector(
                   onTap: () {
                     Navigator.pop(context);
@@ -159,7 +158,6 @@ class _HomePageState extends State<HomePage> {
                                 btnColor: Colors.white,
                                 btnText: "Записаться",
                                 onTap: () {
-                                  print("s");
                                   Navigator.of(context).pushAndRemoveUntil(
                                       MaterialPageRoute(
                                           builder: (context) => const Home(

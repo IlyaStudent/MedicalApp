@@ -268,8 +268,18 @@ class AppointmentPage extends StatelessWidget {
               Container(
                 alignment: Alignment.topLeft,
                 child: const Text(
-                  "Оплата после консультации! \n",
+                  "Оплата после консультации!",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.sizeOf(context).height * 0.02,
+              ),
+              Container(
+                alignment: Alignment.topLeft,
+                child: const Text(
+                  "Стоимость консультации - 1000 рублей",
+                  style: TextStyle(color: hintColor),
                 ),
               ),
               SizedBox(

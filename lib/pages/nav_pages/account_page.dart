@@ -1,10 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:medical_app/components/account_btn.dart';
-import 'package:medical_app/components/button.dart';
-import 'package:medical_app/pages/auth/login_or_register.dart';
 import 'package:medical_app/pages/auth/stream_pade.dart';
 import 'package:medical_app/pages/home.dart';
 import 'package:medical_app/pages/nav_pages/doctors_pages/last_doctors_page.dart';
@@ -78,14 +74,14 @@ class _AccountPageState extends State<AccountPage> {
                 child: Column(
                   children: [
                     AccountBtn(
-                      iconData: Icons.calendar_month_outlined,
-                      text: "Записи",
+                      iconData: Icons.medical_services_outlined,
+                      text: "Врачи",
                       function: () {
                         Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const Home(
-                                      pageNum: 0,
+                                      pageNum: 3,
                                     )),
                             (route) => false);
                       },
@@ -111,7 +107,7 @@ class _AccountPageState extends State<AccountPage> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const Home(
-                                      pageNum: 0,
+                                      pageNum: 3,
                                     )),
                             (route) => false);
                       },

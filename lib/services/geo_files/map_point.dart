@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 
-/// Модель точки на карте
 class MapPoint extends Equatable {
   const MapPoint({
     required this.name,

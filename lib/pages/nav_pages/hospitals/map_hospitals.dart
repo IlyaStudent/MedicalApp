@@ -1,7 +1,5 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-
 import 'package:medical_app/services/consts.dart';
 import 'package:medical_app/components/modal_body_view.dart';
 import 'package:medical_app/services/firebase_database.dart';
@@ -119,9 +117,7 @@ class _MapHospitalsState extends State<MapHospitals> {
   void _initMapController(YandexMapController controller) {
     if (!mapControllerCompleter.isCompleted) {
       mapControllerCompleter.complete(controller);
-    } else {
-      print('Completer is already completed');
-    }
+    } else {}
   }
 
   Widget _buildMapObjects(BuildContext context) {
@@ -133,7 +129,6 @@ class _MapHospitalsState extends State<MapHospitals> {
           if (snapshot.hasData) {
             List<MapObject<dynamic>> mapObjects =
                 snapshot.data!.cast<MapObject<dynamic>>();
-            print(mapObjects);
             return YandexMap(
               onMapCreated: (controller) {
                 _initMapController(controller);

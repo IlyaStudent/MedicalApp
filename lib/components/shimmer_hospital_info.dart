@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:medical_app/services/consts.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ShimmerHospitalInfo extends StatelessWidget {
@@ -21,9 +19,9 @@ class ShimmerHospitalInfo extends StatelessWidget {
             Container(
               color: Colors.grey.shade100,
               width: double.infinity,
-              child: Text(
+              child: const Text(
                 "",
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 18,
                 ),
               ),
@@ -32,26 +30,26 @@ class ShimmerHospitalInfo extends StatelessWidget {
             Container(
               color: Colors.grey.shade100,
               width: double.infinity,
-              child: Text(
+              child: const Text(
                 "г.,",
-                style: const TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 14),
               ),
             ),
             const SizedBox(height: 5),
             Container(
               color: Colors.grey.shade100,
               width: double.infinity,
-              child: Text(
+              child: const Text(
                 "Часы работы: ",
-                style: const TextStyle(fontSize: 12),
+                style: TextStyle(fontSize: 12),
               ),
             ),
             Container(
               color: Colors.grey.shade100,
               width: double.infinity,
-              child: Text(
+              child: const Text(
                 "",
-                style: const TextStyle(fontSize: 12),
+                style: TextStyle(fontSize: 12),
               ),
             ),
           ],
